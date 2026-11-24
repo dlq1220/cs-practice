@@ -1,0 +1,12 @@
+*.exe
+*.o
+*.obj
+*.out
+*.a
+*.so
+*.dll
+__pycache__/
+*.pyc
+.vscode/
+.idea/
+.DS_Store
