@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>算法可视化实验室 · AlgoLab</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <header class="hero">
+    <div class="hero-inner">
+      <div class="badge">CS Practice · 算法系列</div>
+      <h1>算法可视化实验室</h1>
+      <p>把课堂上的经典算法，变成看得见的过程。输入数据，点运行，看它一步步算出来。</p>
+      <div class="tech">
+        <span>Python 标准库后端</span>
+        <span>原生 HTML / CSS / JS</span>
+        <span>零第三方依赖</span>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <nav class="tabs" role="tablist">
+      <button class="tab active" data-tab="subseq" role="tab">
+        <span class="tab-icon">Σ</span> 最大子段和
+      </button>
+      <button class="tab" data-tab="matrix" role="tab">
+        <span class="tab-icon">▦</span> 矩阵连乘
+      </button>
+      <button class="tab" data-tab="tiling" role="tab">
+        <span class="tab-icon">▤</span> 2×n 铺砖
+      </button>
+    </nav>
+
+    <!-- 最大子段和 -->
+    <section class="panel active" id="panel-subseq">
+      <div class="card">
+        <h2>Kadane 算法 · 最大子段和</h2>
+        <p class="desc">在一串整数里找出连续子数组，使它的和最大。动态规划的经典入门题。</p>
+        <div class="control">
+          <label for="subseq-input">输入数组（逗号或空格分隔）</label>
+          <div class="input-row">
+            <input id="subseq-input" type="text" value="-2, 1, -3, 4, -1, 2, 1, -5, 4">
+            <button class="btn" onclick="runSubseq()">运行 →</button>
+          </div>
+          <div class="examples">
+            试试：
+            <button onclick="setSubseq('-2, 1, -3, 4, -1, 2, 1, -5, 4')">经典用例</button>
+            <button onclick="setSubseq('1, -2, 3, -1, 2')">正负混合</button>
+            <button onclick="setSubseq('-1, -2, -3, -4')">全负数</button>
+          </div>
+        </div>
+        <div id="subseq-result" class="result"></div>
+      </div>
+    </section>
+
+    <!-- 矩阵连乘 -->
+    <section class="panel" id="panel-matrix">
+      <div class="card">
+        <h2>区间 DP · 矩阵连乘最优加括号</h2>
+        <p class="desc">矩阵乘法满足结合律但计算量不同。找到加括号方式，让总乘法次数最少。</p>
+        <div class="control">
+          <label for="matrix-input">输入维度序列 p₀,p₁,…,pₙ（共 n+1 个数，表示 n 个矩阵）</label>
+          <div class="input-row">
+            <input id="matrix-input" type="text" value="30, 35, 15, 5, 10, 20, 25">
+            <button class="btn" onclick="runMatrix()">运行 →</button>
+          </div>
+          <div class="examples">
+            试试：
+            <button onclick="setMatrix('30, 35, 15, 5, 10, 20, 25')">教材用例（6 个矩阵）</button>
+            <button onclick="setMatrix('10, 20, 30')">3 个矩阵</button>
+          </div>
+        </div>
+        <div id="matrix-result" class="result"></div>
+      </div>
+    </section>
+
+    <!-- 铺砖 -->
+    <section class="panel" id="panel-tiling">
+      <div class="card">
+        <h2>递推 / 矩阵快速幂 · 2×n 铺砖</h2>
+        <p class="desc">用 1×2 骨牌铺满 2×n 的方格，有多少种方案？答案是斐波那契式递推 f(n)=f(n-1)+f(n-2)。</p>
+        <div class="control">
+          <label for="tiling-input">输入 n（0 ~ 2000，正整数）</label>
+          <div class="input-row">
+            <input id="tiling-input" type="number" value="10" min="0" max="2000">
+            <button class="btn" onclick="runTiling()">运行 →</button>
+          </div>
+          <div class="examples">
+            试试：
+            <button onclick="setTiling(10)">n = 10</button>
+            <button onclick="setTiling(30)">n = 30</button>
+            <button onclick="setTiling(100)">n = 100（看大整数）</button>
+          </div>
+        </div>
+        <div id="tiling-result" class="result"></div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>一个把「学过」变成「看得见」的小项目 · 源码在 GitHub <code>cs-practice/web</code></p>
+  </footer>
+
+  <script src="/app.js"></script>
+</body>
+</html>
